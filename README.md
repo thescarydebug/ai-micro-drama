@@ -128,9 +128,6 @@ ai-micro-drama/
 └── .gitignore
 
 🚀 Current Status
-MVP — Storyboard Generation
-
-
 The current version successfully demonstrates the complete pipeline:
 💡 Story Idea
       ↓
@@ -168,9 +165,3 @@ MicroDrama is designed to eventually evolve from a storyboard generator into a c
 The current version focuses on generating cinematic storyboard images.
 
 The generated frames can serve as starting points for a future image-to-video pipeline, but MicroDrama does not currently claim to generate fully animated AI video clips.
-
-👨‍💻 Author
-
-Tahammul Hussain
-
-Built as an exploration of AI-assisted storytelling, prompt engineering, cinematic image generation, and creative AI workflows.
