@@ -40,7 +40,9 @@ FLUX.1 Schnell
     ↓
 Cinematic Storyboard
 
-🎨 Character Consistency
+***
+
+## 🎨 Character Consistency
 
 A major goal of MicroDrama is maintaining character consistency between scenes.
 
@@ -58,7 +60,10 @@ Facial characteristics
 Personality
 
 These details are repeated in scene prompts so the image-generation model receives enough context to reproduce the same character across the storyboard.
-🏗️ Architecture
+
+***
+
+## 🏗️ Architecture
 ┌──────────────────────────────────┐
 │          Next.js Frontend        │
 │                                  │
@@ -82,7 +87,9 @@ These details are repeated in scene prompts so the image-generation model receiv
 │               │  │                │
 │ Gemini API    │  │ FLUX.1 Schnell │
 └───────────────┘  └────────────────┘
-🛠️ Tech Stack
+
+***
+## 🛠️ Tech Stack
 Frontend
 Next.js
 React
@@ -96,6 +103,9 @@ AI
 Google Gemini
 FLUX.1 Schnell
 Hugging Face Gradio Client
+
+***
+
 📁 Project Structure
 ai-micro-drama/
 │
@@ -118,6 +128,9 @@ ai-micro-drama/
 │       └── scenes/
 │
 └── .gitignore
+
+***
+
 🚀 Current Status
 
 MVP
@@ -134,6 +147,8 @@ Characters
 Cinematic Prompts
  ↓
 AI-Generated Storyboard
+
+***
 🚧 Future Roadmap
  Image-to-video generation
  Character reference images
@@ -145,6 +160,8 @@ AI-Generated Storyboard
  Final MP4 export
  Multiple visual styles
  Project history
+
+***
 ⚠️ Current Limitation
 
 The current version focuses on generating cinematic storyboard images.
