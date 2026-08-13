@@ -44,67 +44,60 @@ Cinematic Storyboard
 
 ## 🎨 Character Consistency
 
-A major goal of MicroDrama is maintaining character consistency between scenes.
+One of MicroDrama's key goals is maintaining visual consistency across scenes.
 
-Instead of using a vague description such as:
+Instead of generating vague prompts like:
 
-young man in a laboratory
+> "A young man in a laboratory"
 
-the system generates detailed visual identities containing:
-Age
-Physical appearance
-Hairstyle
-Clothing
-Accessories
-Facial characteristics
-Personality
+MicroDrama creates detailed character identities containing:
 
-These details are repeated in scene prompts so the image-generation model receives enough context to reproduce the same character across the storyboard.
+- Age and appearance
+- Hairstyle and facial features
+- Clothing and accessories
+- Physical characteristics
+- Personality and visual traits
 
-***
+These details are carried into the scene prompts, giving the image-generation model consistent visual information throughout the storyboard.
+
+---
 
 ## 🏗️ Architecture
-┌──────────────────────────────────┐
-│          Next.js Frontend        │
-│                                  │
-│   Story Input → Storyboard UI    │
-└───────────────┬──────────────────┘
-                │
-                │ HTTP
-                ▼
-┌──────────────────────────────────┐
-│         FastAPI Backend          │
-│                                  │
-│  /generate                       │
-│  /generate-images                │
-│  /generate-image                 │
-└───────────────┬──────────────────┘
-                │
-        ┌───────┴────────┐
-        ▼                ▼
-┌───────────────┐  ┌────────────────┐
-│ Story Engine  │  │ Image Engine   │
-│               │  │                │
-│ Gemini API    │  │ FLUX.1 Schnell │
-└───────────────┘  └────────────────┘
 
-***
-## 🛠️ Tech Stack
-Frontend
-Next.js
-React
-TypeScript
-Tailwind CSS
-Backend
-Python
-FastAPI
-Uvicorn
-AI
-Google Gemini
-FLUX.1 Schnell
-Hugging Face Gradio Client
+```text
+                 ┌─────────────────────┐
+                 │    Next.js Frontend  │
+                 │                     │
+                 │ Story Idea → UI     │
+                 └──────────┬──────────┘
+                            │
+                            │ HTTP
+                            ▼
+                 ┌─────────────────────┐
+                 │    FastAPI Backend  │
+                 │                     │
+                 │ /generate           │
+                 │ /generate-images    │
+                 │ /generate-image     │
+                 └──────────┬──────────┘
+                            │
+                  ┌─────────┴─────────┐
+                  ▼                   ▼
+          ┌───────────────┐   ┌────────────────┐
+          │ Story Engine  │   │  Image Engine  │
+          │               │   │                │
+          │ Gemini API    │   │ FLUX.1 Schnell │
+          └───────────────┘   └────────────────┘
 
-***
+🛠️ Tech Stack
+| Layer                | Technologies                             |
+| -------------------- | ---------------------------------------- |
+| **Frontend**         | Next.js, React, TypeScript, Tailwind CSS |
+| **Backend**          | Python, FastAPI, Uvicorn                 |
+| **Story Generation** | Google Gemini                            |
+| **Image Generation** | FLUX.1 Schnell                           |
+| **AI Interface**     | Hugging Face Gradio Client               |
+
 
 📁 Project Structure
 ai-micro-drama/
@@ -117,6 +110,11 @@ ai-micro-drama/
 ├── generate_images.py
 │
 ├── generated_images/
+│   ├── scene_1.webp
+│   ├── scene_2.webp
+│   ├── scene_3.webp
+│   ├── scene_4.webp
+│   └── scene_5.webp
 │
 ├── frontend/
 │   ├── app/
@@ -129,39 +127,42 @@ ai-micro-drama/
 │
 └── .gitignore
 
-***
-
 🚀 Current Status
+MVP — Storyboard Generation
 
-MVP
 
-The current application demonstrates the complete workflow:
-Idea
- ↓
-AI Story
- ↓
-Characters
- ↓
-5 Scenes
- ↓
-Cinematic Prompts
- ↓
-AI-Generated Storyboard
+The current version successfully demonstrates the complete pipeline:
+💡 Story Idea
+      ↓
+🤖 AI Story Generation
+      ↓
+👤 Character Development
+      ↓
+🎬 Five Scene Breakdown
+      ↓
+✍️ Cinematic Prompt Generation
+      ↓
+🎨 FLUX Image Generation
+      ↓
+🖼️ Cinematic Storyboard
 
-***
-🚧 Future Roadmap
+
+🚧 Roadmap
+
+MicroDrama is designed to eventually evolve from a storyboard generator into a complete AI filmmaking pipeline.
+
  Image-to-video generation
- Character reference images
- Improved character consistency
+ Persistent character reference images
+ Improved cross-scene character consistency
  Camera-motion generation
  AI voice generation
- Background music
+ Background music and sound effects
  Automatic video editing
  Final MP4 export
- Multiple visual styles
- Project history
+ Multiple cinematic visual styles
+ Project history and saved projects
 
-***
+
 ⚠️ Current Limitation
 
 The current version focuses on generating cinematic storyboard images.
