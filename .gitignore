@@ -24,3 +24,12 @@ visual_prompts.json
 # OS
 .DS_Store
 Thumbs.db
+
+# Local development tests
+test_*.py
+
+# AI coding assistant instructions
+AGENTS.md
+CLAUDE.md
+frontend/AGENTS.md
+frontend/CLAUDE.md
