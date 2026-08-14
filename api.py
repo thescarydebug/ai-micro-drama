@@ -1,6 +1,7 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
+from fastapi.responses import Response
 
 from story_engine import generate_full_project
 from image_engine import (
@@ -26,15 +27,32 @@ app.mount(
 # CORS
 # --------------------------------------------------
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=[
-        "https://ai-micro-drama-wheat.vercel.app",
-    ],
-    allow_credentials=False,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+@app.middleware("http")
+async def cors_middleware(request: Request, call_next):
+
+    origin = "https://ai-micro-drama-wheat.vercel.app"
+
+    if request.method == "OPTIONS":
+        return Response(
+            status_code=200,
+            headers={
+                "Access-Control-Allow-Origin": origin,
+                "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+                "Access-Control-Allow-Headers": "Content-Type",
+            },
+        )
+
+    response = await call_next(request)
+
+    response.headers["Access-Control-Allow-Origin"] = origin
+    response.headers["Access-Control-Allow-Methods"] = (
+        "GET, POST, OPTIONS"
+    )
+    response.headers["Access-Control-Allow-Headers"] = (
+        "Content-Type"
+    )
+
+    return response
 
 
 # --------------------------------------------------
@@ -43,6 +61,7 @@ app.add_middleware(
 
 @app.get("/")
 def health_check():
+
     return {
         "status": "ok",
         "message": "MicroDrama API is running",
