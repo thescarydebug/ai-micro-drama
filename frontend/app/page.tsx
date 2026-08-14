@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 
+const API_URL =
+  process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000";
+
 type GeneratedImage = {
   scene_number: number;
   status: "complete" | "error";
@@ -271,7 +274,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/generate",
+        `${API_URL}/generate`,
         {
           method: "POST",
           headers: {
@@ -330,7 +333,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/generate-images",
+        `${API_URL}/generate-images`,
         {
           method: "POST",
           headers: {
@@ -468,7 +471,7 @@ export default function Home() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8000/generate-image",
+        `${API_URL}/generate-image`,
         {
           method: "POST",
           headers: {
