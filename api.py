@@ -8,7 +8,6 @@ from image_engine import (
     generate_single_image,
 )
 
-
 app = FastAPI()
 
 
@@ -30,7 +29,7 @@ app.mount(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-         "https://ai-micro-drama-wheat.vercel.app"
+        "https://ai-micro-drama-wheat.vercel.app",
     ],
     allow_credentials=False,
     allow_methods=["*"],
@@ -44,10 +43,9 @@ app.add_middleware(
 
 @app.get("/")
 def health_check():
-
     return {
         "status": "ok",
-        "message": "MicroDrama API is running"
+        "message": "MicroDrama API is running",
     }
 
 
@@ -61,7 +59,6 @@ def generate_drama(data: dict):
     idea = data.get("idea", "").strip()
 
     if not idea:
-
         return {
             "error": "Story idea is required"
         }
@@ -81,7 +78,6 @@ def generate_project_images(data: dict):
     project = data.get("project")
 
     if not project:
-
         return {
             "status": "error",
             "error": "Project is required"
@@ -117,7 +113,7 @@ def generate_project_images(data: dict):
             "images": images,
             "completed": completed,
             "failed": failed,
-            "total": len(images)
+            "total": len(images),
         }
 
     except Exception as e:
@@ -127,7 +123,7 @@ def generate_project_images(data: dict):
 
         return {
             "status": "error",
-            "error": str(e)
+            "error": str(e),
         }
 
 
@@ -141,7 +137,6 @@ def generate_project_image(data: dict):
     scene = data.get("scene")
 
     if not scene:
-
         return {
             "status": "error",
             "error": "Scene is required"
@@ -160,5 +155,5 @@ def generate_project_image(data: dict):
 
         return {
             "status": "error",
-            "error": str(e)
+            "error": str(e),
         }
